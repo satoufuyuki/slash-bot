@@ -10,7 +10,8 @@
   "license": "AGPL-3.0",
   "author": "KurokuTetsuya <perumnas.good@gmail.com>",
   "contributors": [
-    "Hazmi35 <contact@hzmi.xyz> (https://hzmi.xyz/)"
+    "Hazmi35 <contact@hzmi.xyz> (https://hzmi.xyz/)",
+    "Allvaa (https://allvaa.my.id/)"
   ],
   "main": "dist/index.js",
   "eslintConfig": {
