@@ -15,6 +15,14 @@
     "Waxaranai (https://wisnu.me/)"
   ],
   "main": "dist/index.js",
+  "scripts": {
+    "build": "yarn run lint && yarn run compile",
+    "compile": "tsc --build tsconfig.json",
+    "lint": "eslint . --ext .ts --cache --cache-location .cache/eslintcache",
+    "lint:fix": "eslint . --ext .ts --fix --cache --cache-location .cache/eslintcache",
+    "start": "node dist/index.js",
+    "start:dev": "ts-node -r dotenv/config src/index.ts"
+  },
   "eslintConfig": {
     "parserOptions": {
       "project": "./tsconfig.json"
