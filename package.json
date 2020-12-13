@@ -11,7 +11,8 @@
   "author": "KurokuTetsuya <contact@zenn.me>",
   "contributors": [
     "Hazmi35 <contact@hzmi.xyz> (https://hzmi.xyz/)",
-    "Allvaa (https://allvaa.my.id/)"
+    "Allvaa (https://allvaa.my.id/)",
+    "Waxaranai (https://wisnu.me/)"
   ],
   "main": "dist/index.js",
   "eslintConfig": {
