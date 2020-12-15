@@ -11,7 +11,7 @@ export class CommandManager extends Collection<string, ICommandComponent> {
     public constructor(public client: Client, private readonly path: string) { super(); }
 
     public async load(): Promise<void> {
-        const { body: commands } = await this.client.request.get(this.client.config.isDev ? `applications/guilds/${this.client.config.devServer}/${this.client.config.appID!}/commands` : `applications/${this.client.config.appID!}/commands`) as unknown as { body: ApplicationCommand[] };
+        const { body: commands } = await this.client.request.get(this.client.config.isDev ? `applications/${this.client.config.appID!}/guilds/${this.client.config.devServer}/commands` : `applications/${this.client.config.appID!}/commands`) as unknown as { body: ApplicationCommand[] };
         fs.readdir(resolve(this.path))
             .then(async categories => {
                 this.client.logger.info(`Found ${categories.length} categories, registering...`);
@@ -31,7 +31,7 @@ export class CommandManager extends Collection<string, ICommandComponent> {
                                 const cmd = commands.find(x => x.name === command.meta.name);
                                 if (!cmd) {
                                     this.client.logger.info(`Registering ${command.meta.name} to discord...`);
-                                    await this.client.request.post(this.client.config.isDev ? `applications/guilds/${this.client.config.devServer}/${this.client.config.appID!}/commands` : `applications/${this.client.config.appID!}/commands`, {
+                                    await this.client.request.post(this.client.config.isDev ? `applications/${this.client.config.appID!}/guilds/${this.client.config.devServer}/commands` : `applications/${this.client.config.appID!}/commands`, {
                                         json: {
                                             name: command.meta.name,
                                             description: command.meta.description,
@@ -39,7 +39,7 @@ export class CommandManager extends Collection<string, ICommandComponent> {
                                         }
                                     }).catch(err => this.client.logger.error("CMD_LOADER_ERR:", err));
                                 } else if (cmd.name !== command.meta.name || cmd.description !== command.meta.description || cmd.options !== command.meta.args as any) {
-                                    await this.client.request.patch(this.client.config.isDev ? `applications/guilds/${this.client.config.devServer}/${this.client.config.appID!}/commands` : `applications/${this.client.config.appID!}/commands`, {
+                                    await this.client.request.patch(this.client.config.isDev ? `applications/${this.client.config.appID!}/guilds/${this.client.config.devServer}/commands` : `applications/${this.client.config.appID!}/commands`, {
                                         json: {
                                             name: command.meta.name,
                                             description: command.meta.description,
