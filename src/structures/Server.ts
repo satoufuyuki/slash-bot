@@ -50,6 +50,7 @@ export class ExpressServer {
                     message: "Success!"
                 });
             }
+            this.client.logger.info(`${body.member.user.username}#${body.member.user.discriminator} (${body.member.user.id}) using ${body.data.name} command on ${body.guild_id}`);
             const res = await this.client.commands.handle({ data: body.data });
             if (typeof res !== "object") return;
             return response.status(200).json(res);
