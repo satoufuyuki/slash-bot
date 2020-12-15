@@ -1,3 +1,5 @@
+import { Collection } from "../utils/Collection";
+
 export interface InteractionData {
     id: string;
     type: 1 | 2;
@@ -81,5 +83,13 @@ export interface ICommandComponent {
 export interface ICategoryMeta {
     name: string;
     hide: boolean;
-    cmds: Map<string, ICommandComponent>;
+    cmds: Collection<string, ICommandComponent>;
+}
+
+export interface ApplicationCommand {
+    id: string;
+    application_id: string;
+    name: string;
+    description: string;
+    options: ApplicationCommandOption[];
 }
