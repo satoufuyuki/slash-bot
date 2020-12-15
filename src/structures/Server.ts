@@ -3,6 +3,7 @@ import express from "express";
 import { sign } from "tweetnacl";
 import { InteractionData } from "../typings";
 import { Client } from "./Client";
+import { text } from "body-parser";
 
 export class ExpressServer {
     public readonly app = express();
@@ -12,11 +13,17 @@ export class ExpressServer {
         this.app.listen(this.client.config.serverPort, () => {
             this.client.logger.info(`Express server listening to 0.0.0.0:${this.client.config.serverPort}`);
         });
-
+        this.app.use(text({ type: "*/*" }));
         this.app.post("/interactions", (request, response) => {
             const rawBody = request.body;
             const signature = request.headers["x-signature-ed25519"];
             const timestamp = request.headers["x-signature-timestamp"];
+            if (!signature || !timestamp) {
+                return response.status(401).json({
+                    message: "Invalid request signature!",
+                    status: 401
+                });
+            }
             const isVerified = sign.detached.verify(
                 Buffer.from(timestamp + rawBody),
                 Buffer.from(String(signature), "hex"),
