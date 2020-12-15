@@ -14,6 +14,12 @@ export class ExpressServer {
             this.client.logger.info(`Express server listening to 0.0.0.0:${this.client.config.serverPort}`);
         });
         this.app.use(text({ type: "*/*" }));
+        this.app.get("/", (request, response) => {
+            response.status(200).json({
+                status: 200,
+                message: "Hello World!"
+            });
+        });
         this.app.post("/interactions", (request, response) => {
             const rawBody = request.body;
             const signature = request.headers["x-signature-ed25519"];
