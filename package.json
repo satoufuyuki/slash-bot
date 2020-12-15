@@ -30,6 +30,7 @@
     "extends": "@hazmi35/eslint-config/typescript"
   },
   "dependencies": {
+    "got": "^11.8.1",
     "winston": "^3.3.3"
   },
   "devDependencies": {
