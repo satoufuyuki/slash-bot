@@ -1,10 +1,13 @@
 import got from "got";
-// import { version, name } from "../../package.json";
+import { readFileSync } from "fs";
+import { resolve } from "path";
+
+const { version, name } = JSON.parse(readFileSync(resolve(process.cwd(), "package.json")).toString());
 
 export const RequestManager = got.extend({
     prefixUrl: "https://discord.com/api/v8/",
-    responseType: "json"
-    // headers: { // NOTE: I'm trying to find a way to get version and name from package.json without adding package.json to dist folder
-    //     "user-agent": ``
-    // }
+    responseType: "json",
+    headers: {
+        "user-agent": `${name}/${version}`
+    }
 });
