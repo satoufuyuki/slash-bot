@@ -63,3 +63,23 @@ export interface GuildMember {
     deaf: boolean;
     mute: boolean;
 }
+
+export interface ICommandComponent {
+    meta: {
+        cooldown?: number;
+        disable?: boolean;
+        readonly path?: string;
+        devOnly?: boolean;
+        description?: string;
+        readonly category?: string;
+        name: string;
+        args: ApplicationCommandInteractionDataOption[];
+    };
+    execute(args: ApplicationCommandInteractionDataOption[]): any;
+}
+
+export interface ICategoryMeta {
+    name: string;
+    hide: boolean;
+    cmds: Map<string, ICommandComponent>;
+}
