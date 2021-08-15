@@ -47,10 +47,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@hazmi35/eslint-config@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@hazmi35/eslint-config/-/eslint-config-3.4.0.tgz#279870615a2e939f415105db6382458395e0627a"
-  integrity sha512-TxyxydtJOZfEpI5TUngLun+CQTTpV3zPG9iuyEIk1gdDdV3TulXri7xD6qOU7A4FVuARkE/KLE6UyT37btbBAg==
+"@hazmi35/eslint-config@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@hazmi35/eslint-config/-/eslint-config-4.1.1.tgz#ebc1f1749c8dd6981da56222e09336ba57b32b47"
+  integrity sha512-KaeJKgvaCUG6Qa4ZNbDFZ8NXjEda5xXYxvyw2aV9UTs8IrHhQG+oFpky0qiooR5itdWFGcOlU9OhdnfCKH605w==
 
 "@humanwhocodes/config-array@^0.5.0":
   version "0.5.0"
