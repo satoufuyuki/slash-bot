@@ -20,7 +20,7 @@ export class ExpressServer {
                 message: "Hello World!"
             });
         });
-        this.app.post("/interactions", (request, response) => {
+        this.app.post("/interactions", async (request, response) => {
             const rawBody = request.body;
             const signature = request.headers["x-signature-ed25519"];
             const timestamp = request.headers["x-signature-timestamp"];
@@ -50,7 +50,10 @@ export class ExpressServer {
                     message: "Success!"
                 });
             }
-            this.client.logger.warn("Command handler not implemented!");
+            this.client.logger.info(`${body.member.user.username}#${body.member.user.discriminator} (${body.member.user.id}) using ${body.data.name} command on ${body.guild_id}`);
+            const res = await this.client.commands.handle({ data: body.data });
+            if (typeof res !== "object") return;
+            return response.status(200).json(res);
         });
     }
 }

@@ -1,3 +1,5 @@
+import { Collection } from "../utils/Collection";
+
 export interface InteractionData {
     id: string;
     type: 1 | 2;
@@ -62,4 +64,32 @@ export interface GuildMember {
     premium_since: string|void;
     deaf: boolean;
     mute: boolean;
+}
+
+export interface ICommandComponent {
+    meta: {
+        cooldown?: number;
+        disable?: boolean;
+        readonly path?: string;
+        devOnly?: boolean;
+        description?: string;
+        readonly category?: string;
+        name: string;
+        args: ApplicationCommandInteractionDataOption[];
+    };
+    execute(args: ApplicationCommandInteractionDataOption[]): any;
+}
+
+export interface ICategoryMeta {
+    name: string;
+    hide: boolean;
+    cmds: Collection<string, ICommandComponent>;
+}
+
+export interface ApplicationCommand {
+    id: string;
+    application_id: string;
+    name: string;
+    description: string;
+    options: ApplicationCommandOption[];
 }
