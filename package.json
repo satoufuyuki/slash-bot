@@ -30,7 +30,7 @@
     "extends": "@hazmi35/eslint-config/typescript"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.19.2",
     "express": "^4.17.1",
     "got": "^11.8.2",
     "tweetnacl": "^1.0.3",
